@@ -98,17 +98,7 @@ public class Folha_de_pagamento {
 	
 
 	public static void main(String[] args) {
-	  menu();
-	  int op, total_funcionarios=0;
-	  op=scan.nextInt();
-	  
-	  if(op==1){
-		  add_employee(funcionario, total_funcionarios);
-		  total_funcionarios++;
-	  }
-	  else if(op==2){
-		  remove_employee(funcionario, total_funcionarios);
-	  }
+	  menu();	  
 		
 	}
 
