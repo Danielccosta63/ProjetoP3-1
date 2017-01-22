@@ -24,7 +24,7 @@ public class FolhaDePagamento {
 		funcionario[indiceFuncionarios].salarioMensal = scan.nextDouble();
 
 		System.out.println("\nComissão: ");
-		funcionario[indiceFuncionarios].comissao = scan.nextDouble();
+		funcionario[indiceFuncionarios].comissao = scan.nextDouble() / 100;
 
 		System.out.println("---------------------------------");
 		System.out.println("Empregado adicionado com sucesso!");
@@ -72,7 +72,7 @@ public class FolhaDePagamento {
 			hora = scan.nextInt();
 			System.out.println("Digite os minutos");
 			min = scan.nextInt();
-			funcionario[id].cartaoDePonto[0][dia] = ((hora * 60) + min);
+			funcionario[id].cartaoDePonto[0][dia - 1] = (hora * 60) + min;
 		} else if (op == 2) {
 			System.out.println("Digite o ID do funfionario");
 			id = scan.nextInt();
@@ -82,8 +82,20 @@ public class FolhaDePagamento {
 			hora = scan.nextInt();
 			System.out.println("Digite os minutos");
 			min = scan.nextInt();
-			funcionario[id].cartaoDePonto[2][dia] = (hora * 60) + min;
+			funcionario[id].cartaoDePonto[2][dia - 1] = (hora * 60) + min;
 		}
+	}
+
+	public static void add_sale(Employee funcionario[]) {
+		int dia, id;
+		double valor;
+		System.out.print("Digite o ID do empregado: ");
+		id = scan.nextInt();
+		System.out.print("Digite o dia");
+		dia = scan.nextInt();
+		System.out.print("Digite o valor das vendas");
+		valor = scan.nextInt();
+		funcionario[id].vendas[dia - 1] = valor * funcionario[id].comissao;
 	}
 
 	public static void test(Employee funcionario[], int id) {
@@ -101,6 +113,7 @@ public class FolhaDePagamento {
 			System.out.println("1 -> Adicionar um empregado");
 			System.out.println("2 -> Remover um empregado");
 			System.out.println("3 -> Adicionar cartão de ponto");
+			System.out.println("4 -> Adicionar vendas");
 			System.out.println("0 -> Sair");
 
 			op = scan.nextInt();
@@ -112,6 +125,8 @@ public class FolhaDePagamento {
 				remove_employee(funcionario, total_funcionarios);
 			else if (op == 3)
 				add_card(funcionario);
+			else if (op == 4)
+				add_sale(funcionario);
 			else if (op == 0) {
 				System.exit(0);
 			}
