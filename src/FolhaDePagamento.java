@@ -98,8 +98,18 @@ public class FolhaDePagamento {
 		funcionario[id].vendas[dia - 1] = valor * funcionario[id].comissao;
 	}
 
-	public static void test(Employee funcionario[], int id) {
-
+	public static void add_rate(Employee funcionario[]){
+		int id;
+		double valor;
+		System.out.println("Digite o ID do empregado");
+		id=scan.nextInt();
+		System.out.println("Digite o valor da taxa");
+		valor=scan.nextDouble();
+		funcionario[id].taxas+=valor/100;
+	}
+	
+	public static void test(Employee funcionario[]) {
+		
 	}
 
 	public static void main(String[] args) {
@@ -114,6 +124,7 @@ public class FolhaDePagamento {
 			System.out.println("2 -> Remover um empregado");
 			System.out.println("3 -> Adicionar cartão de ponto");
 			System.out.println("4 -> Adicionar vendas");
+			System.out.println("5 -> Adicionar taxas");
 			System.out.println("0 -> Sair");
 
 			op = scan.nextInt();
@@ -127,6 +138,8 @@ public class FolhaDePagamento {
 				add_card(funcionario);
 			else if (op == 4)
 				add_sale(funcionario);
+			else if (op == 5)
+				add_rate(funcionario);
 			else if (op == 0) {
 				System.exit(0);
 			}

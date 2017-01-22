@@ -8,5 +8,7 @@ public class Employee {
 	public Double comissao;
 	public int[][] cartaoDePonto = new int[2][31];
 	public double[] vendas = new double[31];
+	public int sindicato = 0;
+	public double taxas;
 	public boolean ativo;
 }
