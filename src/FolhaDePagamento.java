@@ -6,7 +6,6 @@ public class FolhaDePagamento {
 
 	public static void add_employee(Employee funcionario[], int indiceFuncionarios) {
 		funcionario[indiceFuncionarios] = new Employee();
-		int op;
 
 		System.out.print("Digite o nome do empregado: ");
 		scan.nextLine();
@@ -29,15 +28,7 @@ public class FolhaDePagamento {
 
 		System.out.println("---------------------------------");
 		System.out.println("Empregado adicionado com sucesso!");
-		System.out.printf("O códido do empregado é [%d]\n", indiceFuncionarios);
-		System.out.println("1-Retornar ao Menu");
-		System.out.println("2-Encerrar");
-		op = scan.nextInt();
-		if (op == 1) {
-			menu();
-		} else if (op == 2) {
-			System.exit(0);
-		}
+		System.out.printf("O ID do empregado é [%d]\n", indiceFuncionarios);
 	}
 
 	public static void remove_employee(Employee funcionario[], int total_funcionarios) {
@@ -63,36 +54,68 @@ public class FolhaDePagamento {
 			}
 		}
 		System.out.println("Empregado removido com sucesso!");
-		System.out.println("1-Retornar ao Menu");
-		System.out.println("2-Encerrar");
+	}
+
+	public static void add_card(Employee funcionario[]) {
+		System.out.println("Digitar cartão de entrada ou saida?");
+		int op, id, dia, hora, min;
+		System.out.println("1 - Entrada");
+		System.out.println("2 - Saida");
 		op = scan.nextInt();
+
 		if (op == 1) {
-			menu();
+			System.out.println("Digite o ID do funfionario");
+			id = scan.nextInt();
+			System.out.println("Digit o dia");
+			dia = scan.nextInt();
+			System.out.println("Digite a hora");
+			hora = scan.nextInt();
+			System.out.println("Digite os minutos");
+			min = scan.nextInt();
+			funcionario[id].cartaoDePonto[0][dia] = ((hora * 60) + min);
 		} else if (op == 2) {
-			System.exit(0);
+			System.out.println("Digite o ID do funfionario");
+			id = scan.nextInt();
+			System.out.println("Digit o dia");
+			dia = scan.nextInt();
+			System.out.println("Digite a hora");
+			hora = scan.nextInt();
+			System.out.println("Digite os minutos");
+			min = scan.nextInt();
+			funcionario[id].cartaoDePonto[2][dia] = (hora * 60) + min;
 		}
 	}
 
-	public static void menu() {
-		System.out.println("Sistema de Folha de Pagamento");
-		System.out.println("-----------------------------");
-		System.out.println("Selecione uma opção\n\n");
-		System.out.println("1 -> Adicionar um empregado");
-		System.out.println("2 -> Remover um empregado");
+	public static void test(Employee funcionario[], int id) {
 
-		int op, total_funcionarios = 0;
-		op = scan.nextInt();
-
-		if (op == 1) {
-			add_employee(funcionario, total_funcionarios);
-			total_funcionarios++;
-		} else if (op == 2) {
-			remove_employee(funcionario, total_funcionarios);
-		}
 	}
 
 	public static void main(String[] args) {
-		menu();
+
+		int op, total_funcionarios = 0;
+
+		do {
+			System.out.println("Sistema de Folha de Pagamento");
+			System.out.println("-----------------------------");
+			System.out.println("Selecione uma opção\n\n");
+			System.out.println("1 -> Adicionar um empregado");
+			System.out.println("2 -> Remover um empregado");
+			System.out.println("3 -> Adicionar cartão de ponto");
+			System.out.println("0 -> Sair");
+
+			op = scan.nextInt();
+
+			if (op == 1) {
+				add_employee(funcionario, total_funcionarios);
+				total_funcionarios++;
+			} else if (op == 2)
+				remove_employee(funcionario, total_funcionarios);
+			else if (op == 3)
+				add_card(funcionario);
+			else if (op == 0) {
+				System.exit(0);
+			}
+		} while (op != 0);
 
 	}
 

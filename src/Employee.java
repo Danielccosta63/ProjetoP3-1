@@ -6,5 +6,6 @@ public class Employee {
 	public Double salarioHora;
 	public Double salarioMensal;
 	public Double comissao;
+	public int[][] cartaoDePonto = new int[2][31];
 	public boolean ativo;
 }
