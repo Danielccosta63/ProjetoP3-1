@@ -10,5 +10,8 @@ public class Employee {
 	public double[] vendas = new double[31];
 	public int sindicato = 0;
 	public double taxas;
+	public double salarioAcumulado;
+	public int vencimento;
 	public boolean ativo;
+	
 }
